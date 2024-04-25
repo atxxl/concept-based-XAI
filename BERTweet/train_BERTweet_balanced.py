@@ -1,8 +1,8 @@
 import os, rich
 import torch
-import numpy  as np
+# import numpy  as np
 import pandas as pd
-import random as rnd
+# import random as rnd
 
 from tqdm     import tqdm
 from torch    import nn
@@ -32,7 +32,7 @@ class BertweetClassifier(nn.Module):
             predictions = torch.argmax(logits, dim=1) + 1 
             return predictions
 
-    
+
 class TwitterDataset(Dataset):
     def __init__(self, texts, labels, tokenizer, max_len):
         self.texts = texts
@@ -94,12 +94,8 @@ def evaluate_model(model, device, test_loader):
 
 def __main__():    
     # Set the seed for reproducibility
-    # seed = 42
-    # torch.manual_seed(seed)
-    # np.random.seed(seed)
-    # rnd.seed(seed)
-
-    # # If using CUDA
+    seed = 42
+    torch.manual_seed(seed)
     # torch.backends.cudnn.deterministic = True
     # torch.backends.cudnn.benchmark = False
     
